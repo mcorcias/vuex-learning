@@ -11,7 +11,6 @@ export default createStore({
       state.counter += randonNumber;
     },
     decreasCounter(state, randonNumber) {
-      console.log(randonNumber);
       state.counter -= randonNumber;
     },
     setColorCode(state, newValue) {
