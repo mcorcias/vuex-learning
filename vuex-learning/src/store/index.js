@@ -4,6 +4,7 @@ import axios from 'axios';
 export default createStore({
   state: {
     counter: 0,
+    colorCode: 'red',
   },
   mutations: {
     increasCounter(state, randonNumber) {
@@ -12,6 +13,9 @@ export default createStore({
     decreasCounter(state, randonNumber) {
       console.log(randonNumber);
       state.counter -= randonNumber;
+    },
+    setColorCode(state, newValue) {
+      state.colorCode = newValue;
     },
   },
   actions: {

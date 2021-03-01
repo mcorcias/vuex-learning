@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div class="counter">
+    <div class="counter" :style="{color: colorCode}">
       {{$store.state.counter}}
     </div>
     <div class="counter-squared">
@@ -12,19 +12,30 @@
       <button @click="$store.dispatch('decreasCounter')">-</button>
       <button @click="$store.dispatch('increasCounter')">+</button>
     </div>
+
+    <div>
+      <input type="text" placeholder="Enter color code" v-model="colorCode">
+
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 
 export default {
   name: 'Home',
-
-  setup(){
-    
-    return{}
+  setup(){},
+  computed:{
+    colorCode:{
+        get(){
+          return this.$store.state.colorCode
+        },
+        set(newValue){
+          this.$store.commit('setColorCode',newValue)
+        }
+    }
   }
  
 }
