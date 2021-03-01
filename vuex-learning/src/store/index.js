@@ -9,8 +9,9 @@ export default createStore({
     increasCounter(state, randonNumber) {
       state.counter += randonNumber;
     },
-    decreasCounter(state) {
-      state.counter--;
+    decreasCounter(state, randonNumber) {
+      console.log(randonNumber);
+      state.counter -= randonNumber;
     },
   },
   actions: {
@@ -18,6 +19,16 @@ export default createStore({
       axios(
         'https://www.random.org/integers/?num=1&min=1&max=6&col=1&base=10&format=plain&rnd=new'
       ).then((res) => commit('increasCounter', res.data));
+    },
+    decreasCounter({ commit }) {
+      axios(
+        'https://www.random.org/integers/?num=1&min=1&max=6&col=1&base=10&format=plain&rnd=new'
+      ).then((res) => commit('decreasCounter', res.data));
+    },
+  },
+  getters: {
+    counterSquared(state) {
+      return Math.pow(state.counter, 2);
     },
   },
   modules: {},
